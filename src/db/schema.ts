@@ -5,7 +5,7 @@ export const users = pgTable("users", {
   name: text("name"),
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
-  role: text("role").$type<"admin" | "user">().default("user"),
-  isApproved: boolean("is_approved").default(false),
+  role: text("role").$type<"admin" | "user">().notNull().default("user"),
+  isApproved: boolean("is_approved").notNull().default(false),
   createdAt: timestamp("created_at").defaultNow(),
 });
